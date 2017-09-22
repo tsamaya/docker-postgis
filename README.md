@@ -11,7 +11,7 @@ Postgis is installed but not linked with postgres. you must enable the extension
 
 NB:
 - EXPOSED PORT is the standard 5432
-- PG_DATA is /var/lib/postgresql/data and can be mount on host
+- PGDATA is /var/lib/postgresql/data and can be mount on host
 - VOLUME /usr/share/data is shared to easly share files from the host to the container.
 
 ## run
