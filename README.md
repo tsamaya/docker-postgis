@@ -15,10 +15,10 @@ NB:
 - VOLUME /usr/share/data is shared to easly share files from the host to the container.
 
 ## run
-  > $ docker run --name pgsql -p 5432:5432 -v `pwd`/data:/usr/share/data -e POSTGRES_DB=demo -e POSTGRES_PASSWORD=mySuper$ecretPassw0rd -d tsamaya/postgis
+  > $ docker run --name pgsql -p 5432:5432 -v `pwd`/data:/usr/share/data -e POSTGRES_DB=demo -e POSTGRES_PASSWORD=mySuper$ecretPassw0rd -d tsamaya/docker-postgis
 
 Sharing db VOLUME:
-  > $ docker run --name pgsql -p 5432:5432 -v `pwd`/data:/usr/share/data -v `pwd`/data/db:/var/lib/postgresql/data -e POSTGRES_DB=demo -e POSTGRES_PASSWORD=mySuper$ecretPassw0rd -d tsamaya/postgis
+  > $ docker run --name pgsql -p 5432:5432 -v `pwd`/data:/usr/share/data -v `pwd`/data/db:/var/lib/postgresql/data -e POSTGRES_DB=demo -e POSTGRES_PASSWORD=mySuper$ecretPassw0rd -d tsamaya/docker-postgis
 
 
 # build your own image
