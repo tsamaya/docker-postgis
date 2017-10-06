@@ -1,6 +1,6 @@
 FROM postgres:9.6.5-alpine
 
-ENV POSTGIS_VERSION 2.3.3
+ENV POSTGIS_VERSION 2.4.0
 
 RUN ash -c 'echo "@testing http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories' \
     && apk update \
