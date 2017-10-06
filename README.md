@@ -2,7 +2,7 @@
 
 this container brings :
 - postgres 9.6.5 on alphine 3.5
-- postgis 2.3.3
+- postgis 2.4.0
 
 As this is built on top of the postgres official images please refer to https://hub.docker.com/_/postgres/ for more informations.
 
@@ -21,6 +21,10 @@ Sharing db VOLUME:
   > $ docker run --name pgsql -p 5432:5432 -v `pwd`/data:/usr/share/data -v `pwd`/data/db:/var/lib/postgresql/data -e POSTGRES_DB=demo -e POSTGRES_PASSWORD=mySuper$ecretPassw0rd -d tsamaya/docker-postgis
 
 
-# build your own image
+## build your own image
   clone this repo
   > docker build -t <repo>/postgis .
+
+## Licence
+
+MIT
