@@ -1,0 +1,40 @@
+FROM postgres:12.2-alpine
+
+ENV POSTGIS_VERSION 3.0.1
+
+RUN ash -c 'echo "@testing http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories' \
+    && apk update \
+    && apk add --no-cache --virtual .fetch-deps \
+    ca-certificates \
+    openssl \
+    tar \
+    && apk add --no-cache --virtual .build-deps \
+    autoconf \
+    automake \
+    g++ \
+    json-c-dev \
+    libtool \
+    libxml2-dev \
+    make \
+    perl \
+    && apk add --no-cache proj4-dev \
+    geos-dev \
+    gdal-dev \
+    && wget http://download.osgeo.org/postgis/source/postgis-${POSTGIS_VERSION}.tar.gz \
+    && tar xvzf postgis-${POSTGIS_VERSION}.tar.gz \
+    && rm postgis-${POSTGIS_VERSION}.tar.gz \
+    && cd postgis-${POSTGIS_VERSION} \
+    && make \
+    && make install \
+    && cd ../ \
+    && rm -r postgis-${POSTGIS_VERSION} \
+    && apk del .fetch-deps .build-deps \
+    && find /usr/local -name '*.a' -delete
+
+RUN mkdir -p /usr/share/data
+
+VOLUME ["/usr/share/data"]
+
+EXPOSE 5432
+
+CMD ["postgres"]
